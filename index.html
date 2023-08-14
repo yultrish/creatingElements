@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <style>
+    :root{
+      --primary-color: aliceblue;
+      --secondary-color: #003459;;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .container {
+      background-color: var(--primary-color);
+      height: 100vh;
+      color: aliceblue;
+    }
+    
+
+    .left-section h4 {
+      font-size: 2rem;
+      line-height: 30px;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+
+    .left-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction:column-reverse;
+      background-color: var(--secondary-color);
+    }
+
+    .left-section img {
+      width: 100%;
+      height: 50vh;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 15px;
+      padding: 0.5rem;
+      background-attachment: fixed;
+    }
+
+    .info{
+      padding: 1rem;
+    }
+
+    .right-section {
+      /* border-left: 1rem solid #947048; */
+      background-color: var(--secondary-color);
+      padding: 2rem;
+      /* margin-top: 2rem; */
+    }
+
+    .right-section h3 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      margin-top: 4rem;
+    }
+
+    .right-section p {
+      font-size: 1.2rem;
+      line-height: 1.8rem;
+    }
+
+    .comment-section p {
+      margin-bottom: 1rem;
+    }
+
+    button {
+      background-color: pink;
+      border: 0;
+      outline: 0;
+      padding: 0.5rem 1.3rem;
+      color: aliceblue;
+      border-radius: 15px;
+      font-weight: bolder;
+      margin-top: 2rem;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: rgb(209, 57, 82);
+    }
+
+    .textarea {
+      margin-top: 2rem;
+    }
+
+    #textarea {
+      padding: 0.4rem;
+      outline: 0;
+      
+    }
+
+    @media screen and (min-width:768px) {
+         .container {
+      display: grid;
+      grid-template-columns: auto 25rem;
+      gap: 2rem;
+      border: 10px solid var(--primary-color);
+    }
+
+     .left-section img{
+      width: 50vw;
+    }
+    }
+
+  </style>
+  <body>
+    <div class="container">
+      <main class="left-section">
+        <img src="./penthouse.jpg" alt="" />
+        <div class="info">
+          <h4>The Finest penthouse</h4>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorum,
+            doloremque.
+          </p>
+        </div>
+    </main>
+      <div class="right-section">
+        <h3>Comments</h3>
+        <div class="comment-section">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
+            rerum praesentium sapiente nulla, quod odit deleniti! Odio et omnis
+            nam.
+          </p>
+
+          <p>OMG! This is the most beautiful and affordable penthouse in Accra</p>
+        </div>
+
+        <div class="textarea">
+          <textarea
+            id="textarea"
+            placeholder="comment here"
+            rows="5"
+            cols="40"
+          ></textarea>
+        </div>
+
+        <button class="button" onclick="addComment()">Add Comment</button>
+      </div>
+    </div>
+
+    <script>
+      const addComment = () => {
+        const commentPara = document.createElement("p");
+        const userComment = document.getElementById("textarea").value;
+        console.log(userComment);
+
+        const commentSection = document.querySelector(".comment-section");
+
+        const commentTxt = document.createTextNode(userComment);
+        commentPara.appendChild(commentTxt);
+
+        commentSection.appendChild(commentPara);
+
+        setTimeout(() => {
+          document.getElementById("textarea").value = "";
+        }, 500);
+      };
+    </script>
+  </body>
+</html>
